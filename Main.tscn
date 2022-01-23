@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://oy1g7ro0r7oe"]
+
+[ext_resource type="Script" path="res://Maze.gd" id="1_28h2c"]
+[ext_resource type="Script" path="res://Map.gd" id="2_7yxim"]
+[ext_resource type="Script" path="res://debugcam.gd" id="3_7d6pu"]
+[ext_resource type="PackedScene" uid="uid://67l2p2ki2224" path="res://Player.tscn" id="4_bolmd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x7c5r"]
+
+[sub_resource type="Sky" id="Sky_sxaa8"]
+sky_material = SubResource( "ProceduralSkyMaterial_x7c5r" )
+
+[sub_resource type="Environment" id="Environment_gliox"]
+background_mode = 2
+sky = SubResource( "Sky_sxaa8" )
+
+[sub_resource type="CameraEffects" id="CameraEffects_br60n"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource( "1_28h2c" )
+
+[node name="Map" type="Node" parent="."]
+script = ExtResource( "2_7yxim" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.735849, 0.677146, 0, -0.677146, 0.735849, 0, 13.6887, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+script = ExtResource( "3_7d6pu" )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_gliox" )
+camera_effects = SubResource( "CameraEffects_br60n" )
+
+[node name="Player" parent="." instance=ExtResource( "4_bolmd" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)

@@ -1,0 +1,6 @@
+res://Main.tscn
+res://Map.gd
+res://Maze.gd
+res://Player.gd
+res://Player.tscn
+res://debugcam.gd
